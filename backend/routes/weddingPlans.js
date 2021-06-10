@@ -17,12 +17,40 @@ router.route("/add").post((req, res) => {
         username,
         description,
         date,
-        guestsAmount
+        guestsAmount,
     });
 
     newWeddingPlan
         .save()
         .then(() => res.json("New Wedding Plan has been added!"))
+        .catch((err) => res.status(400).json("Error: " + err));
+});
+
+router.route("/:id").get((req, res) => {
+    WeddingPlan.findById(req.params.id)
+        .then((weddingPlan) => res.json(weddingPlan))
+        .catch((err) => res.status(400).json("Error: " + err));
+});
+
+router.route("/:id").delete((req, res) => {
+    WeddingPlan.findByIdAndDelete(req.params.id)
+        .then(() => res.json("Wedding Plan has been deleted."))
+        .catch((err) => res.status(400).json("Error: " + err));
+});
+
+router.route("/update/:id").post((req, res) => {
+    WeddingPlan.findById(req.params.id)
+        .then((weddingPlan) => {
+            weddingPlan.username = req.body.username;
+            weddingPlan.description = req.body.description;
+            weddingPlan.date = Date.parse(req.body.date);
+            weddingPlan.guestsAmount = Number(req.body.guestsAmount);
+
+            weddingPlan
+                .save()
+                .then(() => res.json("Wedding Plan has been updated!"))
+                .catch((err) => res.status(400).json("Error: " + err));
+        })
         .catch((err) => res.status(400).json("Error: " + err));
 });
 
