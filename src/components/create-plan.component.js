@@ -64,7 +64,7 @@ export default class EditPlan extends Component {
     render() {
         return (
             <div className="container">
-                <h3 class="title">Create a new Wedding Plan</h3>
+                <h3 className="title">Create a new Wedding Plan</h3>
                 <div className="columns">
                     <div className="column is-one-third">
                         <form onSubmit={this.onSubmit}>

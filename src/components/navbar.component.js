@@ -14,8 +14,8 @@ export default class Navbar extends Component {
                         <img alt="wedding-planner-logo" src="/logo.svg" width="28" height="28" />
                     </Link>
                 </div>
-                <div id="navbarHome" class="navbar-menu">
-                    <div class="navbar-start">
+                <div id="navbarHome" className="navbar-menu">
+                    <div className="navbar-start">
                         <Link to="/" className="navbar-item">
                             Wedding Plans
                         </Link>
