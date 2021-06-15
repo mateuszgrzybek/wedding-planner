@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -22,10 +23,19 @@ export default class EditPlan extends Component {
     }
 
     componentDidMount() {
-        this.setState({
-            users: ["development user"],
-            username: "development user",
-        });
+        axios
+            .get("http://localhost:5000/users/")
+            .then((response) => {
+                if (response.data.length > 0) {
+                    this.setState({
+                        users: response.data.map((user) => user.username),
+                        username: response.data[0].username,
+                    });
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }
 
     onChangeUsername(e) {
@@ -57,7 +67,13 @@ export default class EditPlan extends Component {
             date: this.state.date,
             guestsAmount: this.state.guestsAmount,
         };
+
         console.log(weddingPlan);
+
+        axios
+            .post("http://localhost:5000/weddingPlans/add", weddingPlan)
+            .then((res) => console.log(res.data));
+
         window.location = "/";
     }
 
@@ -108,7 +124,7 @@ export default class EditPlan extends Component {
                             </div>
                             <div className="field">
                                 <label className="label">
-                                    Planned guests amount:{" "}
+                                    Planned guests amount:
                                 </label>
                                 <div className="control">
                                     <input
