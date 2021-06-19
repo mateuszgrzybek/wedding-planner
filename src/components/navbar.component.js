@@ -1,5 +1,6 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import AuthNav from './auth-nav';
 
 export default class Navbar extends Component {
     render() {
@@ -11,7 +12,23 @@ export default class Navbar extends Component {
             >
                 <div className="navbar-brand">
                     <Link to="/" className="navbar-item">
-                        <img alt="wedding-planner-logo" src="/logo.svg" width="28" height="28" />
+                        <img
+                            alt="wedding-planner-logo"
+                            src="/logo.svg"
+                            width="28"
+                            height="28"
+                        />
+                    </Link>
+                    <Link
+                        role="button"
+                        className="navbar-burger"
+                        aria-label="menu"
+                        aria-expanded="false"
+                        data-target="navbarBasicExample"
+                    >
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
                     </Link>
                 </div>
                 <div id="navbarHome" className="navbar-menu">
@@ -26,6 +43,13 @@ export default class Navbar extends Component {
                         <Link to="/user" className="navbar-item">
                             Create a new User
                         </Link>
+                    </div>
+                </div>
+                <div className="navbar-end">
+                    <div className="navbar-item">
+                        <div className="buttons">
+                            <AuthNav />
+                        </div>
                     </div>
                 </div>
             </nav>

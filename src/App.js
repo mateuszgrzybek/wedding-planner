@@ -1,11 +1,11 @@
-import "./App.css";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import Navbar from "./components/navbar.component"
-import CreateUser from "./components/create-user.component";
-import WeddingPlans from "./components/wedding-plans.component";
-import EditPlan from "./components/edit-plan.component";
-import CreateNewPlan from "./components/create-plan.component";
+import Navbar from './components/navbar.component';
+import CreateUser from './components/create-user.component';
+import WeddingPlans from './components/wedding-plans.component';
+import EditPlan from './components/edit-plan.component';
+import CreateNewPlan from './components/create-plan.component';
 
 function App() {
     return (
